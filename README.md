@@ -1,7 +1,10 @@
 
 ## 项目介绍
 
-本项目作为web接口调用工具库，自动帮你解析请求响应的JSON数据，网络框架使用最热门的OkHttp3，JSON解析用阿里的fastJson。
+OkHttp-FastJson，一个让网络请求更简单的框架。
+* 网络框架使用最热门的OkHttp3，比HttpClient性能更强，引用api更简单！
+* 自动帮你解析请求响应的JSON数据，让你专注于处理业务逻辑。JSON解析用阿里的fastJson，速度比gson和fackson更快，引用api更简单！
+
 
 ## 快速入门
 
