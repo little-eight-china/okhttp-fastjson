@@ -5,7 +5,7 @@ package github.hjg;
  *
  * @author little-eight
  */
-public class InterfaceException extends Exception {
+public class InterfaceException extends Exception{
 
     /**
      * <code>serialVersionUID</code> 的注释

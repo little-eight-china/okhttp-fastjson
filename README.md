@@ -159,3 +159,4 @@ price: 23.01
             .maxIdleConnections(5) //最大空闲连接数,默认5个
             .keepAliveDuration(300000).build()); //,最大存活时间,默认300000
 ```
+
