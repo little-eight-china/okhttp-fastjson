@@ -47,6 +47,7 @@ public class JsonInterface extends AbstractOkHttpInterface{
      * 请求对象
      * @return
      */
+    @Override
     public OkHttpHelper okHttpHelper(OkHttpConfig okhttpConfig){
         this.okHttpHelper = new OkHttpHelper(okhttpConfig);
         return okHttpHelper;

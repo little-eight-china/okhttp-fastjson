@@ -106,15 +106,10 @@ public class ProductVo {
     public void setPrice(double price) {
         this.price = price;
     }
-
-    @Override
-    public String toString() {
-        ReflectionToStringBuilder.setDefaultStyle(ToStringStyle.JSON_STYLE);
-        return ReflectionToStringBuilder.toString(this);
-    }
 }
 ```
 ```java
+import github.hjg.FastJsonHelper;
 import github.hjg.InterfaceException;
 import github.hjg.JsonInterface;
 import github.hjg.OkHttpInterface;
@@ -135,7 +130,7 @@ public class TestController {
 	public String getTest() throws InterfaceException {
 	   OkHttpInterface okhttpInterface = new JsonInterface();
 	   ProductVo product = okhttpInterface.getForObject("http://localhost:8080/test/getService", ProductVo.class,"");
-	   return product.toString();
+	   return FastJsonHelper.FAST_JSON_HELPER.toString(product);
 	}
 
 ```

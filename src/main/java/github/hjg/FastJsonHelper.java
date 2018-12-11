@@ -11,10 +11,10 @@ public interface FastJsonHelper {
 
     /**
      * 解析
-     * @param content
-     * @param classType
-     * @param <T>
-     * @return
+     * @param content 解析文本
+     * @param classType 解析类型
+     * @param <T> T
+     * @return T
      */
     <T> T parse(String content, Class<T> classType) throws InterfaceException;
 
@@ -38,7 +38,6 @@ public interface FastJsonHelper {
         @Override
         public <T> T parse(String content, Class<T> classType) throws InterfaceException {
             try {
-//                    return (T)objectMapper.readValue(content,classType);
                 return (T) JSON.parseObject(content,classType);
             } catch (Exception e) {
                 throw new InterfaceException(e.getMessage(),e);

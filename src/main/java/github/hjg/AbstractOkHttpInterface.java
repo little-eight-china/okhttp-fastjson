@@ -22,6 +22,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T requestForObject(Request request, Class<T> responseType) throws InterfaceException {
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
 		return handleResponse(null, request, extractor);
@@ -35,7 +36,8 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T requestForObject(Request request, TypeReference<T> typeRef) throws InterfaceException {
+    @Override
+	public <T> T requestForObject(Request request, TypeReference<T> typeRef) throws InterfaceException {
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(null, request, extractor);
     }
@@ -50,6 +52,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T requestForObject(Request request, Class<T> responseType, OkHttpConfig okHttpConfig)
 			throws InterfaceException {
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
@@ -65,7 +68,8 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T requestForObject(Request request, TypeReference<T> typeRef,OkHttpConfig okHttpConfig) throws InterfaceException
+    @Override
+	public <T> T requestForObject(Request request, TypeReference<T> typeRef, OkHttpConfig okHttpConfig) throws InterfaceException
     {
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(okHttpConfig, request, extractor);
@@ -81,6 +85,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T getForObject(String url, Class<T> responseType, Object... uriVariables) throws InterfaceException {
 		Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables)).build();
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
@@ -96,7 +101,8 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T getForObject(String url, TypeReference<T> typeRef,Object... uriVariables) throws InterfaceException {
+    @Override
+	public <T> T getForObject(String url, TypeReference<T> typeRef, Object... uriVariables) throws InterfaceException {
         Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(null, request, extractor);
@@ -112,6 +118,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T getForObject(String url, Class<T> responseType, Map<String, ?> uriVariables)
 			throws InterfaceException {
 		Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables)).build();
@@ -128,7 +135,8 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T getForObject(String url, TypeReference<T> typeRef, Map<String, ?> uriVariables) throws InterfaceException {
+    @Override
+	public <T> T getForObject(String url, TypeReference<T> typeRef, Map<String, ?> uriVariables) throws InterfaceException {
         Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(null, request, extractor);
@@ -145,6 +153,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T getForObject(String url, Class<T> responseType, OkHttpConfig okHttpConfig, Map<String, ?> uriVariables)
 			throws InterfaceException {
 		Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables)).build();
@@ -162,7 +171,8 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T getForObject(String url, TypeReference<T> typeRef, OkHttpConfig okHttpConfig,Map<String, ?> uriVariables) throws InterfaceException
+    @Override
+	public <T> T getForObject(String url, TypeReference<T> typeRef, OkHttpConfig okHttpConfig, Map<String, ?> uriVariables) throws InterfaceException
     {
         Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -180,6 +190,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T getForObject(String url, Class<T> responseType, OkHttpConfig okHttpConfig, Object... uriVariables)
 			throws InterfaceException {
 		Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables)).build();
@@ -197,7 +208,8 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T getForObject(String url, TypeReference<T> typeRef, OkHttpConfig okHttpConfig,Object... uriVariables) throws InterfaceException
+    @Override
+	public <T> T getForObject(String url, TypeReference<T> typeRef, OkHttpConfig okHttpConfig, Object... uriVariables) throws InterfaceException
     {
         Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -213,6 +225,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @param <T>
 	 * @return
 	 */
+	@Override
 	public <T> T getForObject(String url, Map<String, String> headers, Class<T> responseType, Object... uriVariables)
 			throws InterfaceException {
 		Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables))
@@ -229,8 +242,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @param <T>
      * @return
      */
-    public <T> T getForObject(String url, Map<String, String> headers, TypeReference<T> typeRef,
-                       Object... uriVariables) throws InterfaceException {
+    @Override
+	public <T> T getForObject(String url, Map<String, String> headers, TypeReference<T> typeRef,
+							  Object... uriVariables) throws InterfaceException {
         Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables))
                 .headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -248,8 +262,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T getForObject(String url, Map<String, String> headers, Class<T> responseType, OkHttpConfig okHttpConfig,
-			Object... uriVariables) throws InterfaceException {
+							  Object... uriVariables) throws InterfaceException {
 		Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables))
 				.headers(Headers.of(headers)).build();
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
@@ -266,8 +281,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T getForObject(String url, Map<String, String> headers, TypeReference<T> typeRef,OkHttpConfig okHttpConfig,
-                       Object... uriVariables) throws InterfaceException {
+    @Override
+	public <T> T getForObject(String url, Map<String, String> headers, TypeReference<T> typeRef, OkHttpConfig okHttpConfig,
+							  Object... uriVariables) throws InterfaceException {
         Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables))
                 .headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -284,8 +300,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T getForObject(String url, Map<String, String> headers, Class<T> responseType,
-			Map<String, ?> uriVariables) throws InterfaceException {
+							  Map<String, ?> uriVariables) throws InterfaceException {
 		Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables))
 				.headers(Headers.of(headers)).build();
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
@@ -301,8 +318,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T getForObject(String url, Map<String, String> headers,TypeReference<T> typeRef,
-                       Map<String, ?> uriVariables) throws InterfaceException {
+    @Override
+	public <T> T getForObject(String url, Map<String, String> headers, TypeReference<T> typeRef,
+							  Map<String, ?> uriVariables) throws InterfaceException {
         Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables))
                 .headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -320,8 +338,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T getForObject(String url, Map<String, String> headers, Class<T> responseType, OkHttpConfig okHttpConfig,
-			Map<String, ?> uriVariables) throws InterfaceException {
+							  Map<String, ?> uriVariables) throws InterfaceException {
 		Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables))
 				.headers(Headers.of(headers)).build();
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
@@ -338,8 +357,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T getForObject(String url, Map<String, String> headers,TypeReference<T> typeRef,OkHttpConfig okHttpConfig,
-                       Map<String, ?> uriVariables) throws InterfaceException {
+    @Override
+	public <T> T getForObject(String url, Map<String, String> headers, TypeReference<T> typeRef, OkHttpConfig okHttpConfig,
+							  Map<String, ?> uriVariables) throws InterfaceException {
         Request request = new Request.Builder().url(StringUriTemplateUtil.expand(url, uriVariables))
                 .headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -356,6 +376,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T postForObject(String url, Class<T> responseType, RequestBody requestBody) throws InterfaceException {
 		Request request = new Request.Builder().url(url).post(requestBody).build();
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
@@ -371,7 +392,8 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, TypeReference<T> typeRef, RequestBody requestBody) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, TypeReference<T> typeRef, RequestBody requestBody) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(requestBody).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(null, request, extractor);
@@ -388,6 +410,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T postForObject(String url, Class<T> responseType, OkHttpConfig okHttpConfig, RequestBody requestBody)
 			throws InterfaceException {
 		Request request = new Request.Builder().url(url).post(requestBody).build();
@@ -405,7 +428,8 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, TypeReference<T> typeRef, OkHttpConfig okHttpConfig,RequestBody requestBody) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, TypeReference<T> typeRef, OkHttpConfig okHttpConfig, RequestBody requestBody) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(requestBody).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(okHttpConfig, request, extractor);
@@ -422,6 +446,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T postForObject(String url, Map<String, String> headers, Class<T> responseType, RequestBody requestBody)
 			throws InterfaceException {
 		Request request = new Request.Builder().url(url).post(requestBody).headers(Headers.of(headers)).build();
@@ -439,8 +464,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Map<String,String> headers,TypeReference<T> typeRef,
-                        RequestBody requestBody) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef,
+							   RequestBody requestBody) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(requestBody).headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(null, request, extractor);
@@ -458,8 +484,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T postForObject(String url, Map<String, String> headers, Class<T> responseType, OkHttpConfig okHttpConfig,
-			RequestBody requestBody) throws InterfaceException {
+							   RequestBody requestBody) throws InterfaceException {
 		Request request = new Request.Builder().url(url).post(requestBody).headers(Headers.of(headers)).build();
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
 		return handleResponse(okHttpConfig, request, extractor);
@@ -476,8 +503,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Map<String,String> headers,TypeReference<T> typeRef, OkHttpConfig okHttpConfig,
-                        RequestBody requestBody) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef, OkHttpConfig okHttpConfig,
+							   RequestBody requestBody) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(requestBody).headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(okHttpConfig, request, extractor);
@@ -493,6 +521,7 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
+	@Override
 	public <T> T postForObject(String url, Class<T> responseType, String content, MediaType mediaType)
 			throws InterfaceException {
 		Request request = new Request.Builder().url(url).post(RequestBody.create(mediaType, content)).build();
@@ -509,8 +538,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, TypeReference<T> typeRef,
-                        String content, MediaType mediaType) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, TypeReference<T> typeRef,
+							   String content, MediaType mediaType) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(RequestBody.create(mediaType, content)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
         return handleResponse(null, request, extractor);
@@ -526,8 +556,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Class<T> responseType,
-                        Object content, MediaType mediaType) throws InterfaceException
+    @Override
+	public <T> T postForObject(String url, Class<T> responseType,
+							   Object content, MediaType mediaType) throws InterfaceException
     {
         Request request = new Request.Builder().url(url).post(
                 RequestBody.create(mediaType, fastJsonHelper().toString(content))).build();
@@ -545,8 +576,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, TypeReference<T> typeRef,
-                        Object content, MediaType mediaType) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, TypeReference<T> typeRef,
+							   Object content, MediaType mediaType) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(
                 RequestBody.create(mediaType, fastJsonHelper().toString(content))).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -564,8 +596,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T postForObject(String url, Map<String, String> headers, Class<T> responseType, String content,
-			MediaType mediaType) throws InterfaceException {
+							   MediaType mediaType) throws InterfaceException {
 		Request request = new Request.Builder().url(url).post(RequestBody.create(mediaType, content))
 				.headers(Headers.of(headers)).build();
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
@@ -582,8 +615,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef,
-                        String content,MediaType mediaType) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef,
+							   String content, MediaType mediaType) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(RequestBody.create(mediaType, content))
                 .headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -601,8 +635,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Map<String,String> headers, Class<T> responseType,
-                        Object content,MediaType mediaType) throws InterfaceException
+    @Override
+	public <T> T postForObject(String url, Map<String,String> headers, Class<T> responseType,
+							   Object content, MediaType mediaType) throws InterfaceException
     {
         Request request = new Request.Builder().url(url).post(RequestBody.create(mediaType, fastJsonHelper().toString(content)))
                 .headers(Headers.of(headers)).build();
@@ -621,8 +656,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef,
-                        Object content,MediaType mediaType) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef,
+							   Object content, MediaType mediaType) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(RequestBody.create(mediaType, fastJsonHelper().toString(content)))
                 .headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -641,8 +677,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 * @return
 	 * @throws InterfaceException
 	 */
+	@Override
 	public <T> T postForObject(String url, Map<String, String> headers, Class<T> responseType, OkHttpConfig okHttpConfig,
-			String content, MediaType mediaType) throws InterfaceException {
+							   String content, MediaType mediaType) throws InterfaceException {
 		Request request = new Request.Builder().url(url).post(RequestBody.create(mediaType, content))
 				.headers(Headers.of(headers)).build();
 		ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), responseType);
@@ -660,8 +697,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef,OkHttpConfig okHttpConfig,
-                        String content,MediaType mediaType) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef, OkHttpConfig okHttpConfig,
+							   String content, MediaType mediaType) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(RequestBody.create(mediaType, content))
                 .headers(Headers.of(headers)).build();
         ObjectExtractor<T> extractor = new ObjectExtractor<>(fastJsonHelper(), typeRef);
@@ -679,8 +717,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Map<String,String> headers, Class<T> responseType,OkHttpConfig okHttpConfig,
-                        Object content,MediaType mediaType) throws InterfaceException
+    @Override
+	public <T> T postForObject(String url, Map<String,String> headers, Class<T> responseType, OkHttpConfig okHttpConfig,
+							   Object content, MediaType mediaType) throws InterfaceException
     {
         Request request = new Request.Builder().url(url).post(
                 RequestBody.create(mediaType, fastJsonHelper().toString(content)))
@@ -700,8 +739,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
      * @return
      * @throws InterfaceException
      */
-    public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef,OkHttpConfig okHttpConfig,
-                        Object content,MediaType mediaType) throws InterfaceException {
+    @Override
+	public <T> T postForObject(String url, Map<String,String> headers, TypeReference<T> typeRef, OkHttpConfig okHttpConfig,
+							   Object content, MediaType mediaType) throws InterfaceException {
         Request request = new Request.Builder().url(url).post(
                 RequestBody.create(mediaType, fastJsonHelper().toString(content)))
                 .headers(Headers.of(headers)).build();
@@ -722,8 +762,9 @@ public abstract class AbstractOkHttpInterface implements OkHttpInterface {
 	 */
 	private <T> T handleResponse(OkHttpConfig okHttpConfig, final Request request, final ObjectExtractor<T> extractor)
 			throws InterfaceException {
-		if (okHttpConfig != null)
+		if (okHttpConfig != null) {
 			okHttpHelper(okHttpConfig);
+		}
 		Response response = null;
 		try {
 			response = okHttpHelper().execute(request);

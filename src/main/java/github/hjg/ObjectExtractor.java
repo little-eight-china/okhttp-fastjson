@@ -27,11 +27,12 @@ public class ObjectExtractor<T> {
         this.typeRef = typeRef;
     }
 
-    public T extractData(Response response) throws IOException, InterfaceException {
+    T extractData(Response response) throws IOException, InterfaceException {
         String resp = response.body().string();
 
-        if(responseType == null)
-            return (T)fastJsonHelper.parse(resp,typeRef);
+        if(responseType == null) {
+            return (T) fastJsonHelper.parse(resp, typeRef);
+        }
         return (T)fastJsonHelper.parse(resp,responseType);
     }
 }

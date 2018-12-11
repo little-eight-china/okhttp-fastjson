@@ -14,8 +14,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.8.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.1.1.RELEASE</version>
+		<relativePath/>
 	</parent>
 
 	<properties>
@@ -33,12 +33,12 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.40</version>
+			<version>1.2.54</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>20.0</version>
+			<version>27.0.1-jre</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -59,75 +59,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>nexus-aliyun</id>
-			<name>Nexus aliyun</name>
-			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-		</repository>
-	</repositories>
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<!-- 打包时移除application.yml -->
-					<plugin>
-						<artifactId>maven-jar-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-								<configuration>
-									<!-- Need this to ensure application.yml is excluded -->
-									<forceCreation>true</forceCreation>
-									<excludes>
-										<exclude>application.yml</exclude>
-									</excludes>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- Source -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-source-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>jar-no-fork</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- Javadoc -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.7</version>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-								<configuration>
-									<encoding>UTF-8</encoding>
-								</configuration>
-							</execution>
-						</executions>
-						<configuration>
-							<encoding>UTF-8</encoding>
-							<charset>UTF-8</charset>
-							<docencoding>UTF-8</docencoding>
-							<additionalparam>-Xdoclint:none</additionalparam>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
